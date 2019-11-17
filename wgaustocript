@@ -18,13 +18,15 @@ echo ""
 echo "This will take 3-5 minutes, wait until the process is finished..."
 echo ""
 
-# Installing repository
+echo "Installing repositories."
+
+# Installing repositories
 sudo add-apt-repository ppa:wireguard/wireguard -y > out.log 2> /dev/null
 apt-get update -y > out.log 2> /dev/null
 apt-get install wireguard-dkms wireguard-tools -y > out.log 2> /dev/null
 apt install jq -y > out.log 2> /dev/null
 
-echo "Repository is installed."
+echo "Configuring the wireguard server."
 
 # Server Configuring
 echo '[Interface]
@@ -35,7 +37,8 @@ PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 SaveConfig = true' > /etc/wireguard/wg0.conf
 
-echo "Configuring the wireguard server."
+echo "Starting the server."
+echo ""
 
 #Starting Server
 wg-quick up wg0 > out.log 2> /dev/null
@@ -44,8 +47,7 @@ sudo systemctl enable wg-quick@wg0 > out.log 2> /dev/null
 echo 'net.ipv4.ip_forward = 1' > /etc/sysctl.d/ipv4_forwarding.conf > out.log 2> /dev/null
 sysctl --system > out.log 2> /dev/null
 
-echo "Starting the server."
-echo ""
+echo "Registering your server into Cloudflare."
 
 curl -d '{"key":"'$PUBLICKEY'", "install_id":"", "warp_enabled":true, "tos":"2019-11-17T00:00:00.000+01:00", "type":"Android", "locale":"en_GB"}' https://api.cloudflareclient.com/v0a737/reg | tee warp.json > /dev/null
 
