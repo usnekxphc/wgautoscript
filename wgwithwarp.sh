@@ -83,5 +83,5 @@ _______________________
 
 Autoscript by Usnekx
 
-Special Thanks for PHC_Tipaklong for the tutorial
+Special Thanks to PHC_Tipaklong for the tutorial
 https://phcorner.net/threads/791583/'
