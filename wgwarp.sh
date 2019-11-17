@@ -5,6 +5,8 @@ PRIVATEKEY="";
 PUBLICKEY="";
 CLOUDFLAREKEY="bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=";
 
+clear
+
 echo "WireGuard with Warp Autoscript"
 echo ""
 echo -n "Enter VPS IP: "
