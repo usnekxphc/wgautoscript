@@ -68,9 +68,9 @@ Your PRIVATEKEY is '$PRIVATEKEY'
 
 _______________________
 
-Your Client Config is:
+Your Client Config is:'
 
-[Interface]
+echo '[Interface]
 Address = 172.16.0.2/12
 DNS = 1.1.1.1
 PrivateKey = '$PRIVATEKEY'
@@ -78,10 +78,11 @@ PrivateKey = '$PRIVATEKEY'
 [Peer]
 PublicKey = '$CLOUDFLAREKEY'
 AllowedIPs = 0.0.0.0/0
-Endpoint = engage.cloudflareclient.com:2408
-_______________________
-
-Autoscript by Usnekx
+Endpoint = engage.cloudflareclient.com:2408' > client.conf
+echo '
+_______________________'
+echo ""
+echo 'Autoscript by Usnekx
 
 Special Thanks to PHC_Tipaklong for the tutorial
 https://phcorner.net/threads/791583/'
