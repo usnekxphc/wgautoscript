@@ -61,15 +61,6 @@ clear
 clear
 clear
 
-echo 'Wireguard has successfully installed in your VPS
-
-Your PUBLICKEY is '$PUBLICKEY'
-Your PRIVATEKEY is '$PRIVATEKEY'
-
-_______________________
-
-Your Client Config is:'
-
 echo '[Interface]
 Address = 172.16.0.2/12
 DNS = 1.1.1.1
@@ -79,10 +70,27 @@ PrivateKey = '$PRIVATEKEY'
 PublicKey = '$CLOUDFLAREKEY'
 AllowedIPs = 0.0.0.0/0
 Endpoint = engage.cloudflareclient.com:2408' > client.conf
-echo '
-_______________________'
-echo ""
-echo 'Autoscript by Usnekx
+
+echo 'Wireguard has successfully installed in your VPS
+
+Your PUBLICKEY is '$PUBLICKEY'
+Your PRIVATEKEY is '$PRIVATEKEY'
+
+_______________________
+
+Your Client Config is:
+
+[Interface]
+Address = 172.16.0.2/12
+DNS = 1.1.1.1
+PrivateKey = '$PRIVATEKEY'
+
+[Peer]
+PublicKey = '$CLOUDFLAREKEY'
+AllowedIPs = 0.0.0.0/0
+Endpoint = engage.cloudflareclient.com:2408
+
+_______________________
 
 Special Thanks to PHC_Tipaklong for the tutorial
 https://phcorner.net/threads/791583/'
